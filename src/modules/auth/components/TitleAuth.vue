@@ -1,5 +1,5 @@
 <template >
-  <q-card-section>
+  <q-card-section class="q-mb-sm">
     <div class="text-center q-pt-lg">
       <div class="col text-h3">todo<span class="bg-title">.legal</span></div>
     </div>
