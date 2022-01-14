@@ -73,12 +73,13 @@ import {useRouter} from 'vue-router';
 import Swal from 'sweetalert2';
 
 import useAuth from '../composables/useAuth';
+import {singUpUser} from '@/modules/auth/store/actions';
 
 export default {
   name: 'Register',
   setup() {
     const router = useRouter();
-    const {createUser} = useAuth();
+    const {singUpUser} = useAuth();
 
     const userForm = ref({
       name: 'Chris',
@@ -98,8 +99,7 @@ export default {
           title: 'Espere porfavor... ',
         }).then();
         Swal.showLoading();
-        const {ok, message} = await createUser(userForm.value);
-        console.log(ok, message);
+        const {ok, message} = await singUpUser(userForm.value);
         if (!ok) {
           Swal.close();
           Swal.fire('', message).then();

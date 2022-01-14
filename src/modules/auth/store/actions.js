@@ -46,7 +46,7 @@ export const singUpUser = async ({commit}, user) => {
     } = user;
 
     try {
-        await authApi.post('/getUserState', {
+        await authApi.post('/user', {
             name,
             last_name,
             phone_number,

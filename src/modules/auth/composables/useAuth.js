@@ -9,7 +9,7 @@ import {useStore} from 'vuex';
  */
 const useAuth = () => {
     const store = useStore();
-    const singUpUser = async (user) => await store.dispatch('auth/createUser', user);
+    const singUpUser = async (user) => await store.dispatch('auth/singUpUser', user);
     const signInUser = async (user) => await store.dispatch('auth/signInUser', user);
 
     return {
