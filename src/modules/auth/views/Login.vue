@@ -1,18 +1,18 @@
-<template >
+<template>
   <q-card
-    v-bind:style="$q.screen.lt.sm ? { width: '100%' } : { width: '100%' }"
-    class="bg-card"
+      v-bind:style="$q.screen.lt.sm ? { width: '100%' } : { width: '100%' }"
+      class="bg-card"
   >
     <q-card-section>
       <div class="text-center q-pt-lg">
         <div class="col text-h4">
-          <span class="text-indigo-10">Bienvenido</span>
+          <span class="text-indigo-10">Bienvenido Usuario</span>
         </div>
         <q-separator
-          color="indigo-10"
-          size="3px"
-          inset="item-center"
-          class="q-mt-lg"
+            color="indigo-10"
+            size="3px"
+            inset="item-center"
+            class="q-mt-lg"
         />
       </div>
       <div class="text-center q-pt-lg">
@@ -24,25 +24,25 @@
       </div>
       <q-form class="q-gutter-md q-mt-lg" @submit.prevent="onSubmit">
         <q-input
-          filled
-          v-model="userForm.username"
-          label="Cédula de identidad"
-          lazy-rules
-          :rules="[
+            filled
+            v-model="userForm.username"
+            label="Cédula de identidad"
+            lazy-rules
+            :rules="[
             (val) => (val !== null && val !== '') || 'Ingresar su cédula',
           ]"
         >
           <template v-slot:append>
             <q-icon name="info" color="blue">
               <q-tooltip
-                class="text-body2 bg-white"
-                max-width="15rem"
-                transition-show="scale"
-                transition-hide="scale"
-                :offset="[10, 10]"
+                  class="text-body2 bg-white"
+                  max-width="15rem"
+                  transition-show="scale"
+                  transition-hide="scale"
+                  :offset="[10, 10]"
               >
                 <span class="text-black text-center"
-                  >Tu cédula debe encontrarse vigente para ingresar al
+                >Tu cédula debe encontrarse vigente para ingresar al
                   sistema</span
                 >
               </q-tooltip>
@@ -50,24 +50,25 @@
           </template>
         </q-input>
         <q-input
-          type="password"
-          filled
-          v-model="userForm.password"
-          label="Contraseña"
-          lazy-rules
-          :rules="[
+            type="password"
+            filled
+            v-model="userForm.password"
+            label="Contraseña"
+            lazy-rules
+            :rules="[
             (val) => (val !== null && val !== '') || 'Ingresar su contraseña',
           ]"
         />
         <div class="text-center">
           <router-link class="link" :to="{ name: 'register' }"
-            >No tienes una cuenta, crear una GRATIS</router-link
+          >No tienes una cuenta, crear una GRATIS
+          </router-link
           >
         </div>
         <div class="row justify-end">
           <q-btn flat type="submit">
             <div class="q-pa-sm text-h6 text-blue-10">CONTINUAR</div>
-            <q-icon left size="2em" name="arrow_circle_right" color="blue-10" />
+            <q-icon left size="2em" name="arrow_circle_right" color="blue-10"/>
           </q-btn>
         </div>
       </q-form>
@@ -78,30 +79,40 @@
   </div>
 </template>
 <script>
-import { ref } from "vue";
-import Swal from "sweetalert2";
-import { useRouter } from "vue-router";
-import useAuth from "../composables/useAuth";
+import {ref} from 'vue';
+import Swal from 'sweetalert2';
+import {useRouter} from 'vue-router';
+import useAuth from '../composables/useAuth';
 
 export default {
-  name: "Login",
+  name: 'Login',
 
   setup() {
     const router = useRouter();
-    const { signInUser } = useAuth();
+    const {signInUser} = useAuth();
 
     const userForm = ref({
-      username: "1758711124-2",
-      password: "TTes5t20s51**",
+      username: '1758711124-2',
+      password: 'TTes5t20s51**',
     });
 
     return {
       userForm,
 
       onSubmit: async () => {
-        const { ok, message } = await signInUser(userForm.value);
-        if (!ok) Swal.fire("", message);
-        // else router.push({ name: "no-entry" });
+        Swal.fire({
+          allowOutsideClick: false,
+          title: 'Espere porfavor... ',
+        }).then();
+        Swal.showLoading();
+        const {ok, message} = await signInUser(userForm.value);
+        if (!ok) {
+          Swal.close();
+          Swal.fire('', message).then();
+        } else {
+          Swal.close();
+          router.push({name: 'login-success'}).then();
+        }
       },
     };
   },
@@ -112,9 +123,6 @@ export default {
   background-color: rgb(244, 244, 245);
   border-top-right-radius: 70px;
   border-bottom-left-radius: 70px;
-}
-.color-primary {
-  color: #003158;
 }
 
 .link {

@@ -1,4 +1,3 @@
-
 export default {
 
     name: 'auth',
@@ -14,6 +13,11 @@ export default {
             name: 'register',
             component: () => import(/* webpackChunkName: "Register" */ '@/modules/auth/views/Register.vue'),
         },
+        {
+            path: '/login-success',
+            name: 'login-success',
+            component: () => import(/* webpackChunkName: "Register" */ '@/modules/auth/views/LoginSuccess.vue'),
+        },
     ]
 
-}
+};

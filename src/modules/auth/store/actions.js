@@ -1,23 +1,23 @@
-import authApi from '@/api/authApi'
+import authApi from '@/api/authApi';
 
-export const signInUser = async ({ commit }, user) => {
+export const signInUser = async ({commit}, user) => {
 
-    const { username, password } = user
+    const {username, password} = user;
 
     try {
-        const { data } = await authApi.post('/auth/login', { username, password })
-        commit('signInUser', { data })
+        const {data} = await authApi.post('/auth/login', {username, password});
+        commit('signInUser', {data});
 
-        return { ok: true }
+        return {ok: true};
 
     } catch (error) {
 
-        return { ok: false, message: error.response.data.msg }
+        return {ok: false, message: error.response.data.msg};
     }
 
-}
+};
 
-export const createUser = async ({ commit }, user) => {
+export const createUser = async ({commit}, user) => {
 
     const {
         name,
@@ -27,7 +27,7 @@ export const createUser = async ({ commit }, user) => {
         username,
         password,
         confirmPassword
-    } = user
+    } = user;
 
     try {
         await authApi.post('/user', {
@@ -38,15 +38,15 @@ export const createUser = async ({ commit }, user) => {
             username,
             password,
             confirmPassword
-        })
-        return { ok: true }
+        });
+        return {ok: true};
 
     } catch (error) {
-        console.log(error.response.data)
+        console.log(error.response.data);
 
-        if(error.response.data.message === "Unauthorized") return { ok: false, message: error.response.data.message }
-        if(error.response.data.status === 'ERROR') return { ok: false, message: error.response.data.msg }
+        if (error.response.data.message === 'Unauthorized') return {ok: false, message: error.response.data.message};
+        if (error.response.data.status === 'ERROR') return {ok: false, message: error.response.data.msg};
 
     }
 
-}
+};

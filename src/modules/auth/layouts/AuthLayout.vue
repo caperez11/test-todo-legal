@@ -3,20 +3,20 @@
     <q-page-container class="container">
       <q-page class="flex bg-image flex-center">
         <q-card
-          v-bind:style="$q.screen.lt.sm ? { width: '90%' } : { width: '30%' }"
+            v-bind:style="$q.screen.lt.sm ? { width: '90%' } : { width: '30%' }"
         >
-          <TitleAuth />
-          <router-view />
+          <TitleAuth/>
+          <router-view/>
         </q-card>
       </q-page>
     </q-page-container>
   </q-layout>
 </template>
 <script>
-import TitleAuth from "@/modules/auth/components/TitleAuth.vue";
+import TitleAuth from '@/modules/auth/components/TitleAuth.vue';
 
 export default {
-  name: "AuthLayout",
+  name: 'AuthLayout',
   components: {
     TitleAuth,
   },
@@ -25,5 +25,7 @@ export default {
 <style scoped>
 .container {
   background-color: rgb(244, 244, 245);
+  border: 5px solid #F4F4F5FF;
+  border-radius: 0 40px 0 40px;
 }
 </style>
