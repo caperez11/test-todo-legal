@@ -76,7 +76,7 @@
       </q-card-section>
     </q-layout>
     <div class=" q-mb-md text-center text-blue-10">
-      Examen by <span class="text-bold">Todo.legal</span>
+      Examen by <span class="text-bold">Todo.Legal</span>
     </div>
   </q-card>
 </template>
