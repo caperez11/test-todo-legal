@@ -73,7 +73,6 @@ import {useRouter} from 'vue-router';
 import Swal from 'sweetalert2';
 
 import useAuth from '../composables/useAuth';
-import {singUpUser} from '@/modules/auth/store/actions';
 
 export default {
   name: 'Register',
