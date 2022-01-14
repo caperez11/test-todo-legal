@@ -59,7 +59,7 @@
     </q-layout>
   </q-card>
   <div class="q-mt-md q-mb-md text-center text-blue-10">
-    Gestor de Procesos by <span class="text-bold">Todo.legal</span>
+    Gestor de Procesos by <span class="text-bold">Todo.Legal</span>
   </div>
 </template>
 

@@ -61,7 +61,7 @@
       </q-card-section>
     </q-layout>
     <div class="q-mt-md q-mb-md text-center text-blue-10">
-      Smart Contracts by <span class="text-bold">Todo.legal</span>
+      Smart Contracts by <span class="text-bold">Todo.Legal</span>
     </div>
   </q-card>
 </template>
