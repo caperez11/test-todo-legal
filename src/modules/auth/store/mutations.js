@@ -1,3 +1,8 @@
+/**
+ * Change to set user and token in state and local Storage.
+ * @param {Object} payload
+ * @param state
+ */
 export const signInUser = (state, {data}) => {
     const {access_token, id_token, refresh_token, token_type, status, ...user} = data;
     if (access_token) {

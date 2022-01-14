@@ -3,7 +3,7 @@
     <q-page-container class="container">
       <q-page class="flex bg-image flex-center">
         <q-card
-            v-bind:style="$q.screen.lt.sm ? { width: '90%' } : { width: '30%' }"
+            v-bind:style="$q.screen.lt.sm ? { width: '95%' } : { width: '30%' }"
         >
           <TitleAuth/>
           <router-view/>
@@ -24,8 +24,6 @@ export default {
 </script>
 <style scoped>
 .container {
-  background-color: rgb(244, 244, 245);
-  border: 5px solid #F4F4F5FF;
-  border-radius: 0 40px 0 40px;
+
 }
 </style>

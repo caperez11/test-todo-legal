@@ -1,5 +1,13 @@
 import authApi from '@/api/authApi';
 
+/**
+ * Action to sing in getUserState
+ * Action that receives the commit and the getUserState to login
+ * and returns a promise with the results.
+ * @param {Object} payload
+ * @param user
+ * @returns {Promise}
+ */
 export const signInUser = async ({commit}, user) => {
 
     const {username, password} = user;
@@ -17,7 +25,15 @@ export const signInUser = async ({commit}, user) => {
 
 };
 
-export const createUser = async ({commit}, user) => {
+/**
+ * Action to sing up getUserState
+ * Action that receives the commit and the getUserState to register
+ * and returns a promise with the results.
+ * @param {Object} payload
+ * @param user
+ * @returns {Promise}
+ */
+export const singUpUser = async ({commit}, user) => {
 
     const {
         name,
@@ -30,7 +46,7 @@ export const createUser = async ({commit}, user) => {
     } = user;
 
     try {
-        await authApi.post('/user', {
+        await authApi.post('/getUserState', {
             name,
             last_name,
             phone_number,
@@ -42,8 +58,6 @@ export const createUser = async ({commit}, user) => {
         return {ok: true};
 
     } catch (error) {
-        console.log(error.response.data);
-
         if (error.response.data.message === 'Unauthorized') return {ok: false, message: error.response.data.message};
         if (error.response.data.status === 'ERROR') return {ok: false, message: error.response.data.msg};
 

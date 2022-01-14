@@ -1,5 +1,8 @@
-export default {
+/**
+ * Authentication Module Routes
+ */
 
+export default {
     name: 'auth',
     component: () => import(/* webpackChunkName: "Auth Layout" */ '@/modules/auth/layouts/AuthLayout.vue'),
     children: [
@@ -19,5 +22,4 @@ export default {
             component: () => import(/* webpackChunkName: "Register" */ '@/modules/auth/views/LoginSuccess.vue'),
         },
     ]
-
 };
